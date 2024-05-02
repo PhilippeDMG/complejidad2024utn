@@ -2,13 +2,14 @@
 
 import time
 
+from numerosPrimos import my_set
 from utils import sum_divs1 as s
 
 
 def main():
     """encontrar perfectos hasta lim"""
     lim = 100_000
-    space_set = {0}
+    space_set = my_set
     start_time = time.time()
     for i in range(lim):
         if (time.time() - start_time) > 10:

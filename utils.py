@@ -5,20 +5,33 @@ def sum_divs1(n):
     """suma divisores del nro, sin contar el mismo"""
     if n < 2:
         return n
-    divisores = [1]
+    divisores = {1}
+    powers = set()
     # Itera desde 1 hasta la raíz cuadrada
+    m = 0
     lim = math.ceil(n**0.5)
-    for i in range(2, lim):
+    last = n // lim
+    if lim == last:
+        divisores.add(last)
+    while n % 2 == 0:
+        m += 1
+        n = n // 2
+        powers.add(2**m)
+        divisores.add(n)
+    lim = math.ceil(n**0.5)
+    no_pares = set()
+    for i in range(3, lim, 2):
         # Si i es un divisor de n
         if n % i == 0:
             # Agrega i a la lista de divisores
-            divisores.append(i)
+            no_pares.add(i)
             # Si i no es la raíz cuadrada de n, agrega n/i también
-            divisores.append(n // i)
+            no_pares.add(n // i)
     # Retorna la lista de divisores ordenada
-    last = n // lim
-    if lim == last:
-        divisores.append(last)
+    for elemp in powers:
+        for elemn in no_pares:
+            divisores.add(elemp * elemn)
+    divisores = divisores.union(powers).union(no_pares)
     return sum(divisores)
 
 
