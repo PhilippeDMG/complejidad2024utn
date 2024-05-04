@@ -8,7 +8,7 @@ from utils import sum_divs1 as s
 
 def main():
     """encontrar perfectos hasta lim"""
-    lim = 100_000
+    lim = int(input("ingrese un limite: "))
     space_set = my_set
     start_time = time.time()
     for i in range(lim):
@@ -28,7 +28,7 @@ def main():
                     social_nbrs = sequence[subseq_start:]
                     for nbr in sequence:
                         space_set.add(nbr)
-                    print(f"sequence of length {len(social_nbrs)}: {social_nbrs}")
+                        print(f"sequence of length {len(social_nbrs)}: {social_nbrs}")
                     break
                 else:
                     sequence.append(res)
@@ -38,11 +38,10 @@ def main():
                     space_set.add(elem)
                 break
         if tries == 30:
-            print(f"30 iterations for i == {i}")
+            #print(f"30 iterations for i == {i}")
             for elem in sequence:
                 space_set.add(elem)
                 
-#hola
 
 
 main()
