@@ -38,10 +38,9 @@ def main():
                     space_set.add(elem)
                 break
         if tries == 30:
-            #print(f"30 iterations for i == {i}")
-            for elem in sequence:
-                space_set.add(elem)
-                
+            print(f"30 iterations for i == {i}")
+            # for elem in sequence:
+            #     space_set.add(elem)
 
 
 main()
