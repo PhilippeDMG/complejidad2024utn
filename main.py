@@ -1,7 +1,5 @@
 """TP complejidad nros sociales"""
 
-import time
-
 from numerosPrimos import my_set
 from utils import sum_divs1 as s
 from decorators import delta_time
@@ -11,10 +9,7 @@ def sociables(n):
     """encontrar perfectos hasta lim"""
     lim = 100_000
     space_set = my_set
-    start_time = time.time()
     for i in range(lim):
-        if (time.time() - start_time) > 10:
-            break
         sequence = [i]
         tries = 0
         holder = i
