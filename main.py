@@ -4,11 +4,12 @@ import time
 
 from numerosPrimos import my_set
 from utils import sum_divs1 as s
+from decorators import delta_time
 
-
-def main():
+@delta_time("GRUPO G8")
+def sociables(n):
     """encontrar perfectos hasta lim"""
-    lim = int(input("ingrese un limite: "))
+    lim = 100_000
     space_set = my_set
     start_time = time.time()
     for i in range(lim):
@@ -41,6 +42,7 @@ def main():
             print(f"30 iterations for i == {i}")
             # for elem in sequence:
             #     space_set.add(elem)
+    return lista
 
-
-main()
+if __name__ =="__main__":
+        print(multiperfecto(DATOS))
