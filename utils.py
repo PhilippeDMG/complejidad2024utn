@@ -3,6 +3,7 @@ import math
 
 def sum_divs1(n):
     """suma divisores del nro, sin contar el mismo"""
+    orig = n
     if n < 2:
         return n
     divisores = {1}
@@ -18,24 +19,58 @@ def sum_divs1(n):
         n = n // 2
         powers.add(2**m)
         divisores.add(n)
+    if n == 1:
+        return sum(divisores.union(powers))
+    m = 0
+    powers_3 = set()
+    while n % 3 == 0:
+        m += 1
+        n = n // 3
+        powers_3.add(3**m)
+        divisores.add(n)
+    if n == 1:
+        for elemp3 in powers_3:
+            for elemp in powers:
+                if orig == elemp * elemp3:
+                    continue
+                divisores.add(elemp * elemp3)
+        return sum(divisores.union(powers).union(powers_3))
     lim = math.ceil(n**0.5)
     no_pares = set()
-    for i in range(3, lim, 2):
+    # print(powers_3, powers)
+    # print("divisores", divisores)
+    for i in range(5, lim, 6):
         # Si i es un divisor de n
+        aux = i + 2
         if n % i == 0:
             # Agrega i a la lista de divisores
             no_pares.add(i)
             # Si i no es la raíz cuadrada de n, agrega n/i también
             no_pares.add(n // i)
+        if n % aux == 0:
+            no_pares.add(aux)
+            no_pares.add(n // aux)
     # Retorna la lista de divisores ordenada
     for elemp in powers:
         for elemn in no_pares:
             divisores.add(elemp * elemn)
-    divisores = divisores.union(powers).union(no_pares)
+    for elemp3 in powers_3:
+        for elemn in no_pares:
+            divisores.add(elemp3 * elemn)
+    for elemp in powers:
+        for elemp3 in powers_3:
+            divisores.add(elemp3 * elemp)
+
+    for elemp in powers:
+        for elemp3 in powers_3:
+            for elemn in no_pares:
+                divisores.add(elemp3 * elemp * elemn)
+    divisores = divisores.union(powers).union(no_pares).union(powers_3)
     return sum(divisores)
 
 
 def factores_primos(n):
+    """algo"""
     i = 2
     factores = {}
     sqrtn = math.sqrt(n)

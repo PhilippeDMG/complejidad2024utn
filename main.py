@@ -8,7 +8,7 @@ from utils import sum_divs1 as s
 
 def main():
     """encontrar perfectos hasta lim"""
-    lim = 100_000
+    lim = 1_000_000
     space_set = my_set
     start_time = time.time()
     for i in range(lim):
@@ -17,7 +17,7 @@ def main():
         sequence = [i]
         tries = 0
         holder = i
-        while tries < 30:
+        while tries < 50:
             tries += 1
             res = s(holder)
             if res not in space_set:  # nro no explorado
@@ -37,8 +37,8 @@ def main():
                 for elem in sequence:
                     space_set.add(elem)
                 break
-        if tries == 30:
-            print(f"30 iterations for i == {i}")
+        if tries == 50:
+            print(f"50 iterations for i == {i}")
             for elem in sequence:
                 space_set.add(elem)
 
