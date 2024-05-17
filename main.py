@@ -7,7 +7,7 @@ from decorators import delta_time
 @delta_time("GRUPO G8")
 def sociables(n):
     """encontrar perfectos hasta lim"""
-    lim = 100_000
+    lim = n
     space_set = my_set
     for i in range(lim):
         sequence = [i]
@@ -40,4 +40,4 @@ def sociables(n):
     return lista
 
 if __name__ =="__main__":
-        print(multiperfecto(DATOS))
+        print(sociables(n))
